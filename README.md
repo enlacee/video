@@ -1,6 +1,8 @@
+=======
+# video-angular
+creation of player video with angular and videogular
 
-
-install by bower
+## Step to step install by bower
 
 bower install videogular
 
@@ -23,6 +25,8 @@ bower install videogular-angulartics
 bower install angular
  
 bower install angular-sanitize
+
+
 
 
 
