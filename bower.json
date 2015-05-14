@@ -1,0 +1,25 @@
+{
+  "name": "video",
+  "version": "1",
+  "homepage": "https://github.com/enlacee/video-angular",
+  "authors": [
+    "Anibal C <detops.tk@gmail.com>"
+  ],
+  "description": "replay youtube video",
+  "keywords": [
+    "video",
+    "youtube"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "videogular": "~1.2.0",
+    "videogular-themes-default": "~1.2.0",
+    "videogular-controls": "~1.2.0",
+    "videogular-buffering": "~1.2.0",
+    "videogular-overlay-play": "~1.2.0",
+    "videogular-poster": "~1.2.0",
+    "videogular-ima-ads": "~1.2.0",
+    "videogular-angulartics": "~1.2.0",
+    "videogular-youtube": "~2.0.0",
+  }
+}
