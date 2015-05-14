@@ -1,14 +1,29 @@
 
 
 ///
-angular.module("app",     [
-        "controllers",
-
-        "com.2fdevs.videogular",
-        "com.2fdevs.videogular.plugins.controls",
-        "com.2fdevs.videogular.plugins.overlayplay",
-        "com.2fdevs.videogular.plugins.buffering",
-        "info.vietnamcode.nampnq.videogular.plugins.youtube"
+angular.module("app", [
+    "ngResource",
+    "ngRoute",
+    'ui.calendar',
+    'ui.bootstrap',
+    'mobile-angular-ui.core.fastclick',
+    'mobile-angular-ui.components.sidebars',
+    "ng.deviceDetector",
+    'satellizer',
+    'ngSanitize',
+    'ngTagsInput',
+    'angular-loading-bar',
+    'ngAnimate',
+    'textAngular',
+    "com.2fdevs.videogular",
+		"com.2fdevs.videogular.plugins.controls",
+		"com.2fdevs.videogular.plugins.overlayplay",
+		"com.2fdevs.videogular.plugins.poster",
+    "info.vietnamcode.nampnq.videogular.plugins.youtube",
+    'validation', 'validation.rule',
+    'uiGmapgoogle-maps',
+    'ngTouch',
+    "ngFileUpload"
     ]);
 ///
 angular.module('app').controller('DashboardController', [
