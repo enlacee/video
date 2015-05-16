@@ -44,14 +44,6 @@ angular.module('myApp',
       {
         sources: [
           {src: "https://www.youtube.com/watch?v=gi-wl43o3gc"}
-        ]
-        // Tracks are inside .mpd file and added by Dash.js
-      },
-      {
-        sources: [
-          {src: $sce.trustAsResourceUrl("https://dl.dropboxusercontent.com/u/7359898/video/videogular.mp4"), type: "video/mp4"},
-          {src: $sce.trustAsResourceUrl("https://dl.dropboxusercontent.com/u/7359898/video/videogular.webm"), type: "video/webm"},
-          {src: $sce.trustAsResourceUrl("https://dl.dropboxusercontent.com/u/7359898/video/videogular.ogg"), type: "video/ogg"}
         ],
         tracks: [
           {
@@ -76,7 +68,7 @@ angular.module('myApp',
       transclude: true,
       controls: undefined,
       theme: {
-        url: "styles/themes/default/videogular.css"
+        url: "bower_components/videogular-themes-default/videogular.min.css"
       },
       plugins: {
         poster: {
@@ -94,8 +86,8 @@ angular.module('myApp',
     };
 
     $scope.changeSource = function () {
-      $scope.config.sources = $scope.videos[1].sources;
-      $scope.config.tracks = undefined;
+      $scope.config.sources = $scope.videos[0].sources;
+      $scope.config.tracks =  $scope.videos[0].tracks;
       $scope.config.loop = false;
       $scope.config.preload = true;
     };
