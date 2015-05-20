@@ -43,7 +43,7 @@ angular.module('myApp',
     $scope.videos = [
       {
         sources: [
-          {src: "https://www.youtube.com/watch?v=gi-wl43o3gc"}
+          {src: "https://www.youtube.com/watch?v=KlyXNRrsk4A"}
         ]
         // Tracks are inside .mpd file and added by Dash.js
       },
