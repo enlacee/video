@@ -1,5 +1,5 @@
 "use strict";
-angular.module("app",
+angular.module("myApp",
     [
         "controllers",
 
@@ -11,7 +11,7 @@ angular.module("app",
     ]
 );
 
-angular.module('app').controller('DashboardController', [
+angular.module('myApp').controller('DashboardController', [
   '$scope', '$sce', '$log', '$modal', function($scope, $sce, $log, $modal) {
     $scope.currentTime = 0;
     $scope.totalTime = 0;
