@@ -1,18 +1,18 @@
 "use strict";
 angular.module("myApp",
     [
-        "controllers",
-
+        'ngSanitize',
         "com.2fdevs.videogular",
         "com.2fdevs.videogular.plugins.controls",
         "com.2fdevs.videogular.plugins.overlayplay",
+        "com.2fdevs.videogular.plugins.poster",
         "com.2fdevs.videogular.plugins.buffering",
         "info.vietnamcode.nampnq.videogular.plugins.youtube"
     ]
 );
 
 angular.module('myApp').controller('DashboardController', [
-  '$scope', '$sce', '$log', '$modal', function($scope, $sce, $log, $modal) {
+  '$scope', '$sce', '$log', function($scope, $sce, $log) {
     $scope.currentTime = 0;
     $scope.totalTime = 0;
     $scope.state = null;
@@ -66,39 +66,7 @@ angular.module('myApp').controller('DashboardController', [
         }
       }
     };
-    $scope.$watch(function() {
-      return $scope.user;
-    }, function(nv, ov) {
-      if ((nv.id_user != null)) {
-        $log.debug(nv);
-        if ($scope.isOpenInitial === false) {
-          if (parseInt($scope.user.ss_flag_personal_info_user, 10) + parseInt($scope.user.ss_flag_address_info_user, 10) + parseInt($scope.user.ss_flag_services_info_user, 10) + parseInt($scope.user.ss_flag_time_available_info_user, 10) < 4) {
-            return $scope.open();
-          }
-        }
-      }
-    }, true);
     $scope.isOpenInitial = false;
-    return $scope.open = function() {
-      var modalInstance;
-      $scope.isOpenInitial = true;
-      modalInstance = $modal.open({
-        templateUrl: 'initial_modal.html',
-        controller: 'InitialModalController',
-        size: 'lg',
-        animate: false,
-        resolve: {
-          'happening': function() {
-            return {
-              user: $scope.user
-            };
-          }
-        },
-        backdrop: false,
-        backdropClass: 'backdrop-item'
-      });
-      return modalInstance.result.then(function(result) {}, function(e) {});
-    };
   }
 ]);
 
