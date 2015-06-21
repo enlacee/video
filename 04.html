@@ -23,88 +23,81 @@
               "com.2fdevs.videogular.plugins.buffering",
               "info.vietnamcode.nampnq.videogular.plugins.youtube"
             ]
-            ).controller('HomeCtrl',
-            ["$sce", '$scope' function($sce, $scope) {
-                    
-                $scope.config = {
-                  autoHide: false,
-                  autoHideTime: 3000,
-                  autoPlay: false,
-                  sources: [
-                    // {src: $sce.trustAsResourceUrl("assets/video/video.mp4"), type: "video/mp4"},
-                    {src: "https://www.youtube.com/watch?v=OCy5461BtTg"}
-                  ],
-                  tracks: [
-                    {
-                      src: "assets/lyrics.vtt",
-                      kind: "subtitles",
-                      srclang: "en",
-                      label: "English",
-                      default: ""
-                    }
-                  ],
-                  theme: "bower_components/videogular-themes-default/videogular.css",
-                  plugins: {
-                    poster: "assets/img/video-thumb.png"
-                  }
-                };
-              }]
             );
+
+angular.module('myApp').controller('YoutubeCtrl',
+	function ($scope, $sce) {
+
+    $scope.videos = [
+      {
+        sources: [{src: "https://www.youtube.com/watch?v=gi-wl43o3gc"}],
+        // Tracks are inside .mpd file and added by Dash.js
+        tracks: [{src: "assets/lyrics.vtt"}],
+      },
+
+    ];
+
+    $scope.config = {
+      autoHide: false,
+      autoHideTime: 3000,
+      autoPlay: false,
+      //sources: $scope.videos[0].sources[0],
+     // tracks: $scope.videos[0].tracks[0],
+      loop: false,
+      preload: "auto",
+      transclude: true,
+      controls: undefined,
+      theme: {
+        url: "bower_components/videogular-themes-default/videogular.css_"
+      },
+      plugins: {
+        poster: {
+          url: "assets/images/videogular.png"
+        },
+
+      }
+    };
+
+    $scope.changeSource = function () {
+        console.log('$scope', $scope);
+        /*
+      $scope.config.sources = $scope.videos[0].sources;
+      $scope.config.tracks = undefined;
+      $scope.config.loop = false;
+      $scope.config.preload = true;
+      */
+    };
+	}
+);
     </script>
   </head>
   <body>
-    <div ng-app="myApp" style="width: 500px">
-      <div ng-controller="HomeCtrl as controller" class="videogular-container">
-<!--
-        <videogular vg-theme="controller.config.theme">
-          <vg-media vg-src="controller.config.sources" vg-tracks="controller.config.tracks"></vg-media>
-          <vg-video vg-src="config.sources" vg-youtube></vg-video>
-          
-          <vg-controls>
-            <vg-play-pause-button></vg-play-pause-button>
-            <vg-time-display>{{ currentTime | date:'mm:ss' }}</vg-time-display>
-            <vg-scrub-bar>
-              <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
-            </vg-scrub-bar>
-            <vg-time-display>{{ timeLeft | date:'mm:ss' }}</vg-time-display>
-            <vg-volume>
-              <vg-mute-button></vg-mute-button>
-              <vg-volume-bar></vg-volume-bar>
-            </vg-volume>
-            <vg-fullscreen-button></vg-fullscreen-button>
-          </vg-controls>
+<div ng-app="myApp">
+	<div ng-controller="YoutubeCtrl as controller">
+		<!-- We will put here Videogular tags... -->
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2>Video player</h2>
 
-          <vg-overlay-play></vg-overlay-play>
-          <vg-poster vg-url='controller.config.plugins.poster'></vg-poster>
-        </videogular>-->
+            <div class="videogular-container">
+                <videogular vg-player-ready="onPlayerReady" vg-theme="config.theme.url" vg-autoplay="config.autoPlay">
+                    <vg-video vg-src="config.sources" vg-youtube="rel=1;showinfo=1"></vg-video>
 
-<videogular vg-player-ready="onPlayerReady" vg-theme="config.theme.url" vg-autoplay="config.autoPlay">
-                    <vg-media vg-src="config.sources" vg-youtube="rel=1;showinfo=1"></vg-media>
 
-                    <vg-controls vg-autohide="config.autoHide" vg-autohide-time="config.autoHideTime">
-                        <vg-play-pause-button></vg-play-pause-button>
-                        <vg-timedisplay>{{ currentTime | date:'mm:ss' }}</vg-timedisplay>
-                        <vg-scrubBar>
-                            <vg-scrubbarcurrenttime></vg-scrubbarcurrenttime>
-                        </vg-scrubBar>
-                        <vg-timedisplay>{{ timeLeft | date:'mm:ss' }}</vg-timedisplay>
-                        <vg-volume>
-                            <vg-mutebutton></vg-mutebutton>
-                            <vg-volumebar></vg-volumebar>
-                        </vg-volume>
-                        <vg-fullscreenButton></vg-fullscreenButton>
-                    </vg-controls>
-<!--
-                    <vg-poster-image vg-url='config.plugins.poster.url'></vg-poster-image>
-                    <vg-buffering></vg-buffering>
-                    <vg-overlay-play vg-play-icon="config.theme.playIcon"></vg-overlay-play>
 
-                    <vg-poster-image vg-url='config.plugins.poster.url'></vg-poster-image>
-                    <vg-buffering></vg-buffering>
-                    <vg-overlay-play vg-play-icon="config.theme.playIcon"></vg-overlay-play>-->
-</videogular>
-        
-      </div>
+
+                </videogular>
+            </div>
+        </div>
     </div>
+
+
+</div>
+        
+	</div>
+</div>
+      
+
   </body>
 </html>
