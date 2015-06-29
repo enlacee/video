@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <title></title>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="bower_components/videogular/videogular.js"></script>
+    <script src="bower_components/videogular-controls/vg-controls.js"></script>
+    <script src="bower_components/videogular-overlay-play/vg-overlay-play.js"></script>
+    <script src="bower_components/videogular-poster/vg-poster.js"></script>
+    <script src="bower_components/videogular-buffering/vg-buffering.js"></script>
+    <script>
+    'use strict';
+    angular.module('myApp',
+            [
+              "ngSanitize",
+              "com.2fdevs.videogular",
+              "com.2fdevs.videogular.plugins.controls",
+              "com.2fdevs.videogular.plugins.overlayplay",
+              "com.2fdevs.videogular.plugins.poster"
+            ]
+            ).controller('HomeCtrl',
+            ["$sce", function($sce) {
+                this.config = {
+                  sources: [
+                    {src: $sce.trustAsResourceUrl("assets/video/video.mp4"), type: "video/mp4"},
+                  ],
+                  tracks: [
+                    {
+                      src: "assets/lyrics.vtt",
+                      kind: "subtitles",
+                      srclang: "en",
+                      label: "English",
+                      default: ""
+                    }
+                  ],
+                  theme: "bower_components/videogular-themes-default/videogular.css",
+                  plugins: {
+                    poster: "assets/img/video-thumb.png"
+                  }
+                };
+              }]
+            );
+    </script>
+  </head>
+  <body>
+    <div ng-app="myApp" style="width: 500px">
+      <div ng-controller="HomeCtrl as controller" class="videogular-container">
+
+        
+        <videogular vg-theme="controller.config.theme">
+          <vg-media vg-src="controller.config.sources" vg-tracks="controller.config.tracks" vg-native-controls="true">
+
+          </vg-media>
+
+
+        </videogular>
+      </div>
+    </div>
+  </body>
+</html>
