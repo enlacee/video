@@ -1,7 +1,7 @@
 <html>
   <head>
     <title></title>
-    <link rel="stylesheet" type="text/css" href="bower_components/videogular-themes-default/videogular.min.css">
+    <!--<link rel="stylesheet" type="text/css" href="bower_components/videogular-themes-default/videogular.min.css">-->
   </head>
   <body>
 
@@ -27,8 +27,8 @@
         "com.2fdevs.videogular.plugins.poster",
         "com.2fdevs.videogular.plugins.buffering",
         "info.vietnamcode.nampnq.videogular.plugins.youtube"
-        ]
-                );
+        ]);
+        
         angular.module('myApp').controller('DashboardController', [
         '$scope', '$sce', '$log', function($scope, $sce, $log) {
             $scope.currentTime = 0;
@@ -86,7 +86,7 @@
               }
             ];
             // 03
-            console.log('$scope.videos[0]',$scope.videos[0].sources[0].src)
+
             $scope.config = {
               autoHide: false,
               autoHideTime: 3000,
@@ -100,9 +100,9 @@
               theme: {
                 url: "bower_components/videogular-themes-default/videogular.css"
               },
-              /*plugins: {
+              plugins: {
                 poster: {
-                  url: "assets/img/video-thumb.png"
+                  url: "http://img.youtube.com/vi/Q1fGOG3XXIQ/0.jpg"
                 },
                 ads: {
                   companion: "companionAd",
@@ -112,7 +112,7 @@
                   adTagUrl: "http://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=%2F3510761%2FadRulesSampleTags&ciu_szs=160x600%2C300x250%2C728x90&cust_params=adrule%3Dpremidpostpodandbumpers&impl=s&gdfp_req=1&env=vp&ad_rule=1&vid=47570401&cmsid=481&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&correlator=[timestamp]",
                   skipButton: "<div class='skipButton'>skip ad</div>"
                 }
-              }*/
+              }
             };
 
         // 04
@@ -132,7 +132,7 @@
 
     </script>
     
-    <div ng-app="myApp" style="">
+    <div ng-app="myApp" style="width: 500px">
       <div ng-controller="DashboardController as controller">
         <!-- We will put here Videogular tags... -->
             <div class="videogular-container">
