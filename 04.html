@@ -40,13 +40,31 @@
 
             // 01
             $scope.onPlayerReady = function (API) {
-                $scope.API = API;
+              $scope.API = API;
             };
+
+            $scope.onCompleteVideo = function () {
+              $scope.isCompleted = true;
+            };
+
+            $scope.onUpdateState = function (state) {
+              $scope.state = state;
+            };
+
+            $scope.onUpdateTime = function (currentTime, totalTime) {
+              $scope.currentTime = currentTime;
+              $scope.totalTime = totalTime;
+            };
+
+            $scope.onUpdateVolume = function (newVol) {
+              $scope.volume = newVol;
+            };
+            
             // 02
             $scope.videos = [
               {
                 sources: [
-                  {src: "https://www.youtube.com/watch?v=gi-wl43o3gc"}
+                  {src: "http://www.youtube.com/watch?v=TapXs54Ah3E"}
                 ]
                 // Tracks are inside .mpd file and added by Dash.js
               },
@@ -58,7 +76,7 @@
                 ],
                 tracks: [
                   {
-                    src: "assets/subs/pale-blue-dot.vtt",
+                    src: "assets/lyrics.vtt",
                     kind: "subtitles",
                     srclang: "en",
                     label: "English",
@@ -84,7 +102,7 @@
               },
               /*plugins: {
                 poster: {
-                  url: "assets/images/videogular.png"
+                  url: "assets/img/video-thumb.png"
                 },
                 ads: {
                   companion: "companionAd",
@@ -96,6 +114,7 @@
                 }
               }*/
             };
+
         // 04
         $scope.changeSource = function () {
           $scope.config.sources = $scope.videos[1].sources;
@@ -113,13 +132,35 @@
 
     </script>
     
-    <div ng-app="myApp" style="width: 500px">
+    <div ng-app="myApp" style="">
       <div ng-controller="DashboardController as controller">
         <!-- We will put here Videogular tags... -->
             <div class="videogular-container">
-                <videogular vg-player-ready="onPlayerReady" vg-theme="config.theme.url" vg-autoplay="config.autoPlay">
-                    <vg-video vg-src="config.sources" vg-youtube="rel=1;showinfo=1"></vg-video>
-                </videogular>
+<videogular vg-player-ready="onPlayerReady" vg-theme="config.theme.url" vg-autoplay="config.autoPlay">
+                    <vg-media vg-src="config.sources" vg-youtube="rel=1;showinfo=1"></vg-media>
+
+                    <vg-controls vg-autohide="config.autoHide" vg-autohide-time="config.autoHideTime">
+                        <vg-play-pause-button></vg-play-pause-button>
+                        <vg-timedisplay>{{ currentTime | date:'mm:ss' }}</vg-timedisplay>
+                        <vg-scrubBar>
+                            <vg-scrubbarcurrenttime></vg-scrubbarcurrenttime>
+                        </vg-scrubBar>
+                        <vg-timedisplay>{{ timeLeft | date:'mm:ss' }}</vg-timedisplay>
+                        <vg-volume>
+                            <vg-mutebutton></vg-mutebutton>
+                            <vg-volumebar></vg-volumebar>
+                        </vg-volume>
+                        <vg-fullscreenButton></vg-fullscreenButton>
+                    </vg-controls>
+
+                    <vg-poster-image vg-url='config.plugins.poster.url'></vg-poster-image>
+                    <vg-buffering></vg-buffering>
+                    <vg-overlay-play vg-play-icon="config.theme.playIcon"></vg-overlay-play>
+
+                    <vg-poster-image vg-url='config.plugins.poster.url'></vg-poster-image>
+                    <vg-buffering></vg-buffering>
+                    <vg-overlay-play vg-play-icon="config.theme.playIcon"></vg-overlay-play>
+</videogular>
             </div>
       </div>
     </div>
