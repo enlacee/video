@@ -1,0 +1,7 @@
+{
+    "require": {
+        "chellem/youtube-downloader": "dev-master",
+        "norkunas/youtube-dl-php": "^0.1.3"
+
+    }
+}

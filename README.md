@@ -1,8 +1,18 @@
-=======
-# video-angular
-creation of player video with angular and videogular
 
-## Step to step install by bower
+# Video
+
+Video Player with Angular
+
+testing 
+
+* Video Downloader from youtube
+* Video Player *HTML, JS AND CSS* 
+* Bash
+* PHP
+
+## Creation project with _Components_
+
+### by Bower
 
 bower install videogular
 
